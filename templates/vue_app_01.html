@@ -1,9 +1,19 @@
 {% load render_bundle from webpack_loader %}
 {% load webpack_static from webpack_loader %}
 
-<div id="app">
-<img src="{% webpack_static 'logo.png' %}"/>
-  <app></app>
-</div>
-{% render_bundle 'chunk-vendors' %}
-{% render_bundle 'vue_app_01' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+  {% comment %} <img src="{% webpack_static 'logo.png' %}"/> {% endcomment %}
+    <app></app>
+  </div>
+  {% render_bundle 'chunk-vendors' %}
+  {% render_bundle 'vue_app_01' %}
+</body>
+</html>

@@ -16,7 +16,9 @@ module.exports = {
   filenameHashing: false,
   productionSourceMap: false,
   publicPath:
-    process.env.NODE_ENV === "production" ? "" : "http://localhost:8080/",
+    process.env.NODE_ENV === "production"
+      ? "/static/vue/"
+      : "http://localhost:8080/",
   outputDir: "../django_vue_mpa/static/vue/",
   // outputDir: "../static/vue/",
 
