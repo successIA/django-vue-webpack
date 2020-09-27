@@ -1,6 +1,8 @@
 {% load render_bundle from webpack_loader %}
+{% load webpack_static from webpack_loader %}
 
 <div id="app">
+<img src="{% webpack_static 'logo.png' %}"/>
   <app></app>
 </div>
 {% render_bundle 'chunk-vendors' %}

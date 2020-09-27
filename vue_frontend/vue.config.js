@@ -18,6 +18,7 @@ module.exports = {
   publicPath:
     process.env.NODE_ENV === "production" ? "" : "http://localhost:8080/",
   outputDir: "../django_vue_mpa/static/vue/",
+  // outputDir: "../static/vue/",
 
   chainWebpack: config => {
     config.optimization.splitChunks({
@@ -37,9 +38,19 @@ module.exports = {
       config.plugins.delete(`prefetch-${page}`);
     });
 
-    config
-      .plugin("BundleTracker")
-      .use(BundleTracker, [{ filename: "../vue_frontend/webpack-stats.json" }]);
+    if (process.env.NODE_ENV === "production") {
+      config
+        .plugin("BundleTracker")
+        .use(BundleTracker, [
+          { filename: "../vue_frontend/webpack-stats-prod.json" }
+        ]);
+    } else {
+      config
+        .plugin("BundleTracker")
+        .use(BundleTracker, [
+          { filename: "../vue_frontend/webpack-stats.json" }
+        ]);
+    }
 
     config.resolve.alias.set("__STATIC__", "static");
 
